@@ -37,7 +37,9 @@ L.extend(L.DomEvent, {
 
 		var cb = function (e) {
 
-			L.DomEvent.preventDefault(e);
+			if (e.pointerType !== 'mouse' && e.pointerType !== e.MSPOINTER_TYPE_MOUSE) {
+				L.DomEvent.preventDefault(e);
+			}
 
 			var alreadyInArray = false;
 			for (var i = 0; i < pointers.length; i++) {
